@@ -1,1 +1,2 @@
 # Project-
+This is a sample health care website which was created in a hackathon using bootstrap,php,javascript. Our aim was to create a sample project to provide easy ddoor to door healthcare facilities to people thorugh our website. We also focused on providing fast ambulance services to the public ,by just clicking the ward number and a button the person can directly call an ambualnce with just two touches.
