@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realtime location tracker</title>
+
+    <!-- leaflet css  -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            margin-top: 50px;
+            margin-left: 20px;
+            width: 50%;
+            height: 50vh;
+        }
+        .container{
+            display: flex;
+        }
+        p{
+            height: 50px;
+            width: 200px;
+            border: 2px solid  black;
+        }
+a{
+    
+  margin-left: 900px;
+  margin-top: -370px;
+  height: 50px;
+  width: 200px;
+  border: 1px solid black;
+}
+body {
+          font-family: 'Arial', sans-serif;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          margin: 0;
+        }
+    
+        #animatedDiv {
+          width: 200px;
+          height: 200px;
+          background-color: lightblue;
+          border-radius: 10px;
+          display: flex;
+          flex-direction: column;
+          
+          position: relative;
+        }
+    
+        #dropdown {
+          margin-top: 20px;
+        }
+    
+        #dropdown select {
+          padding: 8px;
+          font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+  
+    <div id="map"></div>
+
+
+     
+    
+    <div id="animatedDiv">
+      <h2>Choose the wards No</h2>
+      <div id="dropdown">
+        <label for="numbers">Select a Wards:</label>
+        <select id="numbers" onchange="updateNumber()">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      </div>
+    </div>
+    
+    <script>
+      function updateNumber() {
+        const selectedNumber = document.getElementById('numbers').value;
+        alert(`You selected: ${selectedNumber}`);
+      }
+    </script>
+    
+    </body>
+    </html>
+    
+              
+</div>
+
+</body>
+</html>
+
+<!-- leaflet js  -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script>
+    // Map initialization 
+    var map = L.map('map').setView([14.0860746, 100.608406], 6);
+
+    //osm layer
+    var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    });
+    osm.addTo(map);
+
+    if(!navigator.geolocation) {
+        console.log("Your browser doesn't support geolocation feature!")
+    } else {
+        setInterval(() => {
+            navigator.geolocation.getCurrentPosition(getPosition)
+        }, 5000);
+    }
+
+    var marker, circle;
+
+    function getPosition(position){
+        // console.log(position)
+        var lat = position.coords.latitude
+        var long = position.coords.longitude
+        var accuracy = position.coords.accuracy
+
+        if(marker) {
+            map.removeLayer(marker)
+        }
+
+        if(circle) {
+            map.removeLayer(circle)
+        }
+
+        marker = L.marker([lat, long])
+        circle = L.circle([lat, long], {radius: accuracy})
+
+        var featureGroup = L.featureGroup([marker, circle]).addTo(map)
+
+        map.fitBounds(featureGroup.getBounds())
+
+        console.log("Your coordinate is: Lat: "+ lat +" Long: "+ long+ " Accuracy: "+ accuracy)
+    }
+
+</script>

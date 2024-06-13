@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Realtime Location Tracker</title>
+
+    <!-- leaflet css  -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #map {
+        width: 100%;
+        height: 100vh;
+      }
+
+      #output {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="output"></div>
+    script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4KHLhiclW4zgUZayxs3wJYB1B6knsWfI&callback=initMap" async defer></script>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
+    <script>
+      var map;
+      var markers = [];
+
+      function initMap() {
+        var kathmandu = {lat: 27.7172, lng: 85.3240};
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: kathmandu
+        });
+
+        map.addListener('click', function(e) {
+          if (markers.length < 2) {
+            addMarker(e.latLng);
+          }
+
+          if (markers.length == 2) {
+            calculateDistance();
+          }
+        });
+      }
+
+      function addMarker(location) {
+        var marker = new google.maps.Marker({
+          position: location,
+          map: map
+        });
+        markers.push(marker);
+      }
+
+      function calculateDistance() {
+        var service = new google.maps.DistanceMatrixService();
+        service.getDistanceMatrix(
+          {
+            origins: [markers[0].getPosition()],
+            destinations: [markers[1].getPosition()],
+            travelMode: 'DRIVING',
+            unitSystem: google.maps.UnitSystem.METRIC,
+          }, callback);
+      }
+
+      function callback(response, status) {
+        if (status == 'OK') {
+          var origins = response.originAddresses;
+          var destinations = response.destinationAddresses;
+          var results = response.rows[0].elements;
+
+          var distance = results[0].distance.text;
+          var duration = results[0].duration.text;
+          var from = origins[0];
+          var to = destinations[0];
+          alert('Distance ' +distance);
+        } else {
+          console.error('Error with Distance Matrix service: ' + status);
+        }
+      }
+    </script>
+  </body>
+</html>

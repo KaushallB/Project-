@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #animatedDiv {
+      width: 200px;
+      height: 200px;
+      background-color: lightblue;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    #dropdown {
+      margin-top: 20px;
+    }
+
+    #dropdown select {
+      padding: 8px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="animatedDiv">
+  <h2>Animated Div</h2>
+  <div id="dropdown">
+    <label for="numbers">Select a number:</label>
+    <select id="numbers" onchange="updateNumber()">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+  </div>
+</div>
+
+<script>
+  function updateNumber() {
+    const selectedNumber = document.getElementById('numbers').value;
+    alert(`You selected: ${selectedNumber}`);
+  }
+</script>
+
+</body>
+</html>

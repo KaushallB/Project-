@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ambulance Services</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style type="text/css">
+        * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+:root {
+      --primary-color: #004caa;
+    --secondary-color: #fc5185;
+    --bg-light-blue: #3672bc;
+    --bg-dark: #666;
+    --bg-white: #fff;
+    --primary-font: 'Roboto Slab', serif;
+    --secondary-font: 'Josefin Sans', sans-serif;
+    --primary-text: #004caa;
+    --secondary-text: #fc5185;
+    --text-white: #fff;
+    --text-black: #222;
+    --text-gray: #666;
+    --text-light: #ddd;
+}
+body {
+    font-family: var(--primary-font);
+    
+}
+img{
+    height: 90px;
+    width: 80px;
+}
+
+.wrapper{
+    padding:6.25rem 0;
+}
+
+        
+        
+        .pd{
+            padding:15px;
+            margin-left:50px;
+            margin-top: 50px;;
+            border:1px solid black;
+            border-radius:20px;
+            width:230px;
+            height:450px;
+            font-size:20px;
+            text-align:justify;
+            float:left;
+        }
+        .pd:hover{
+            
+            border:2px solid #004caa;
+            
+        } 
+        img{
+            height:150px;
+            width:200px;
+        }
+        
+        h1{
+        font-family:'Lucida Console';
+        background-color: #004caa;
+        color:white;
+        text-align:center;
+        margin:0;
+        padding:0;
+        
+        }
+        h2{
+            font-size:25px;
+            text-align:center;
+        }
+        p{
+            text-align: center;
+        }
+        button{
+                background-color:transparent;
+                color:black;
+                padding: 14px;
+                margin: 8px 0;
+                border: 1px solid black;
+                cursor: pointer;
+                 width: 100%;
+                font-size:20px;
+                border-radius:20px;
+           
+            }
+
+        a{
+            color:black;
+        }
+        a:hover{
+            color:white;
+        }
+        
+        header_wrapper .navbar{
+    padding:.9375rem 0;
+    background-color:transparent;
+    transition:0.3s ease-in-out;
+}
+.header_wrapper .navbar-toggler,
+.header_wrapper .navbar-toggler:focus{
+    border:0;
+    box-shadow: none;
+    color:var(--text-black);
+    line-height: 2;
+}
+
+.header_wrapper .nav-item{
+    margin:0 .625rem;
+}
+.header_wrapper .nav-item .nav-link{
+    font-size: 1.125rem;
+    font-weight: 400;
+    color:var(--primary-text);
+    display:inline-block;
+    font-family: var(--secondary-font);
+}
+.header_wrapper .nav-item .nav-link:hover,
+.header_wrapper .nav-item .nav-link:focus,
+.header_wrapper .nav-item .nav-link.active{
+    color:var(--secondary-text);
+}
+
+
+
+@media (max-width:991px)
+{
+   
+    }
+    .header_wrapper .menu-navbar-nav{
+        text-align: center;
+    }
+    .header_wrapper .nav-item .nav-link{
+        margin-top:.9375rem;
+    }
+    </style>
+</head>
+<body>
+    <div id="wardInfo" class="container">
+        <!-- Content for displaying ward information dynamically -->
+    </div>
+
+    <script>
+        // Function to extract parameter from URL
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        // Get ward number from URL parameter
+        var wardNumber = getParameterByName('ward');
+
+        // Display content based on the ward number
+        var wardInfoContainer = document.getElementById('wardInfo');
+        if (wardNumber) {
+            // Use switch or if-else to display content for each ward
+            switch (parseInt(wardNumber)) {
+                case 1:
+                    wardInfoContainer.innerHTML = `
+                        <!-- Content for Ward 1 -->
+                        <h2>Ward 1</h2>
+                        <p>Driver name: Ramesh Khadgi</p>
+                        <p>Ba.Pra 3.1245</p>
+                        <button type="number"><a href="tel:+9779841221523">9841221523</a></button>
+                    `;
+                    break;
+                case 2:
+                    // Content for Ward 2
+                    wardInfoContainer.innerHTML = `
+                        <h2>Ward 2</h2>
+                        <p>Driver name: Ramesh Raul</p>
+                        <p>Ba.Pra 5.7712</p>
+                        <button type="number"><a href="tel:+9779841221523">981309165</a></button>
+                    `;
+                    break;
+                    case 3:
+                    wardInfoContainer.innerHTML = `
+                    <h2>Ward 3</h2>
+                    <p>Driver name:Sapna Magar</p>
+        <p style="margin-top: 17px;"></p>
+        <p>Ba.Pra 3.7812</p>
+        <button type="number"><a href="tel:+9779812131782">9812131782</a></button>
+    </div>
+                    `;
+                    break;
+                    case 4:
+                    wardInfoContainer.innerHTML = `
+                    <h2>Ward-no-4</h2><br>
+        <p style="margin-top: 10px;">Driver name:Samyak Prajapati</p>
+        <p style="margin-top: 5px;"></p>
+        <p>Ba.Pra 3.8848</p>
+        <button type="number"><a href="tel:+9779841221523">9841221523</a></button>
+                    `;
+                    break;
+                    case 5:
+                    wardInfoContainer.innerHTML = `
+                    <h2>Ward-no-5</h2><br>
+        <p style="margin-top: 10px;">Driver name:Amish Shrestha</p>
+        <p style="margin-top: 10px;"></p>
+        <p>Ba.Pra 3.2880</p>
+        <button type="number"><a href="tel:+9779841221523">9841221523</a></button>
+                    `;
+                    break;
+                    case 6:
+                   
+                    wardInfoContainer.innerHTML = `
+
+        <h2>Ward-no-6</h2><br>
+        <p style="margin-top: 10px;">Driver name:Samyak Neupane</p>
+        <p style="margin-top: 10px;"></p>
+        <p>Ba.Pra 1.1254</p>
+        <button type="number"><a href="tel:+9779841237811">9841237811</a></button>
+                    `;
+                    break;
+                    case 7:
+                    wardInfoContainer.innerHTML = `
+                    <h2>Ward-no-7</h2><br>
+        <p style="margin-top: 10px;">Driver name:Raju Lal Khatri</p>
+        <p style="margin-top: 10px;"></p>
+        <p>Ba.Pra 3.5618</p>
+        <button type="number"><a href="tel:+9779844123721">9844123721</a></button>
+                    `;
+                    break;
+                    case 8:
+                    wardInfoContainer.innerHTML = `
+                    <h2 >Ward-no-8</h2><br>
+        <p style="margin-top: 10px;">Driver name:Ramesh Punjabi</p>
+        <p style="margin-top: 17px;"></p>
+        <p>Ba.Pra 3.3441</p>
+        <button type="number"><a href="tel:+9779821212189">9821212189</a></button>
+                    `;
+                    break;
+                    case 9:
+                    wardInfoContainer.innerHTML = `
+                    <h2>Ward-no-9</h2><br>
+        <p style="margin-top: 10px;">Driver name:Satri Maitri</p>
+        <p>Ba.Pra 4.4844</p>
+        <button type="number"><a href="tel:+9779831215461">9831215461</a></button>
+                    `;
+                    break;
+                    case 10:
+                    wardInfoContainer.innerHTML = `
+                    
+      
+      <h2>Ward-no-10</h2><br>
+      <p style="margin-top: 10px;">Driver name:Aparichit Thapa</p>
+      <p>Ba.Pra 2.4211</p>
+      <button type="number"><a href="tel:+9779821435444">9821435444</a></button>
+                    
+                    `;
+                    break;
+                default:
+                    wardInfoContainer.innerHTML = `<p>Invalid ward number</p>`;
+            }
+        } else {
+            wardInfoContainer.innerHTML = `<p>No ward selected</p>`;
+        }
+    </script>
+</body>
+</html>

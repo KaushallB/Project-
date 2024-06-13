@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Ward</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style type="text/css">
+        body {
+            font-family: 'Roboto Slab', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ff4d4d; /* Red color for emergency */
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .ward-card {
+            width: 200px;
+            height: 200px;
+            background-color: #ff6666; /* Lighter red for ward card */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 1rem;
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .ward-card:hover {
+            animation: blink 1s infinite; /* Blinking animation on hover */
+            transform: scale(1.05);
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .ward-number {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .ward-description {
+            text-align: center;
+            margin-top: 10px;
+            padding: 0 10px;
+            color: #fff; /* White text for better visibility */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Emergency Ward Selection</h1>
+    </header>
+
+    <div class="container">
+        <!-- Creating cards for each ward from 1 to 10 -->
+        <!-- You can customize the descriptions accordingly -->
+        <div class="ward-card" onclick="selectWard(1)">
+            <div class="ward-number">Ward 1</div>
+            <div class="ward-description">Critical care and emergencies.</div>
+        </div>
+        
+        <div class="ward-card" onclick="selectWard(2)">
+            <div class="ward-number">Ward 2</div>
+            <div class="ward-description">Emergency surgical procedures.</div>
+        </div>
+        <div class="ward-card" onclick="selectWard(3)">
+            <div class="ward-number">Ward 3</div>
+            <div class="ward-description">Emergency surgical procedures.</div>
+        </div>
+        <div class="ward-card" onclick="selectWard(4)">
+            <div class="ward-number">Ward 4</div>
+            <div class="ward-description">Emergency surgical procedures.</div>
+        </div>
+        <div class="ward-card" onclick="selectWard(5)">
+            <div class="ward-number">Ward 5</div>
+            <div class="ward-description">Emergency surgical procedures.</div>
+        </div>
+        <div class="ward-card" onclick="selectWard(6)">
+            <div class="ward-number">Ward 6</div>
+            <div class="ward-description">Emergency surgical procedures.</div>
+        </div>
+        <div class="ward-card" onclick="selectWard(7)">
+            <div class="ward-number">Ward 7</div>
+            <div class="ward-description">Emergency surgical procedures.</div>
+        </div>
+        <div class="ward-card" onclick="selectWard(8)">
+            <div class="ward-number">Ward 8</div>
+            <div class="ward-description">Emergency surgical procedures.</div>
+        </div>
+        <div class="ward-card" onclick="selectWard(9)">
+            <div class="ward-number">Ward 9</div>
+            <div class="ward-description">Emergency surgical procedures.</div>
+        </div>
+        <div class="ward-card" onclick="selectWard(10)">
+            <div class="ward-number">Ward 10</div>
+            <div class="ward-description">Emergency surgical procedures.</div>
+        </div>
+        <!-- Add more wards as needed -->
+    </div>
+    <script>
+        function selectWard(wardNumber) {
+            window.location.href = 'Ambulance Service.html?ward=' + wardNumber;
+        }
+    </script>
+</body>
+</html>
